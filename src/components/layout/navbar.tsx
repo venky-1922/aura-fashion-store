@@ -42,8 +42,8 @@ export function Navbar() {
         "sticky top-0 z-50 w-full transition-colors duration-500",
         isHome && "lg:-mb-20",
         solid
-          ? "bg-paper/90 backdrop-blur-md border-b border-ink/10"
-          : "bg-paper border-b border-ink/10 lg:bg-transparent lg:border-transparent"
+          ? "bg-paper/90 backdrop-blur-md"
+          : "bg-paper lg:bg-transparent"
       )}
     >
       <div
