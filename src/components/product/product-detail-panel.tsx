@@ -58,7 +58,7 @@ export function ProductDetailPanel({ product }: { product: Product }) {
       <div className="flex items-start justify-between gap-4">
         <div>
           <p className="text-xs uppercase tracking-[0.14em] text-ink/40">{product.tagline}</p>
-          <h1 className="mt-1 font-display text-2xl leading-tight text-ink sm:text-3xl">
+          <h1 className="mt-1 font-display text-2xl leading-[1.1] text-ink sm:text-3xl">
             {product.name}
           </h1>
         </div>
@@ -104,7 +104,7 @@ export function ProductDetailPanel({ product }: { product: Product }) {
               onClick={() => setSelectedColor(c.name)}
               aria-label={c.name}
               className={cn(
-                "h-8 w-8 rounded-full border-2 transition-all",
+                "h-11 w-11 rounded-full border-2 transition-all",
                 selectedColor === c.name ? "border-ink scale-110" : "border-transparent"
               )}
               style={{ backgroundColor: c.hex }}
@@ -172,7 +172,12 @@ export function ProductDetailPanel({ product }: { product: Product }) {
 
       {/* CTAs */}
       <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-        <Button variant="outline" size="lg" className="flex-1" onClick={handleAddToCart}>
+        <Button
+          variant="outline"
+          size="lg"
+          className="h-[60px] w-full flex-none text-sm tracking-[0.07em] sm:h-14 sm:flex-1 sm:text-xs"
+          onClick={handleAddToCart}
+        >
           <motion.span
             key={added ? "added" : "add"}
             initial={{ opacity: 0, y: 4 }}
@@ -188,7 +193,11 @@ export function ProductDetailPanel({ product }: { product: Product }) {
             )}
           </motion.span>
         </Button>
-        <Button size="lg" className="flex-1" onClick={handleBuyNow}>
+        <Button
+          size="lg"
+          className="h-[60px] w-full flex-none text-sm tracking-[0.07em] sm:h-14 sm:flex-1 sm:text-xs"
+          onClick={handleBuyNow}
+        >
           Buy Now
         </Button>
       </div>

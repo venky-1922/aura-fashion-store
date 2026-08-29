@@ -94,7 +94,7 @@ export function Hero() {
             AURA GYM WEAR
           </p>
 
-          <h1 data-hero-fade className="max-w-xl font-display text-[clamp(1.4rem,5.5vw,3.5rem)] leading-[0.95] text-paper sm:text-display">
+          <h1 data-hero-fade className="max-w-xl font-display text-[clamp(1.4rem,5.5vw,3.5rem)] leading-[1.08] text-paper sm:text-display">
             Built for your grind.
           </h1>
 

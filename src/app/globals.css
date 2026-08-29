@@ -4,6 +4,8 @@
    DESIGN TOKENS
 --------------------------------------------- */
 :root {
+  --font-sans: "Helvetica Neue", "Helvetica Neue LT Pro", Helvetica, Arial, sans-serif;
+  --font-display: "Helvetica Neue", "Helvetica Neue LT Pro", Helvetica, Arial, sans-serif;
   --color-paper: #f6f4ef;
   --color-ink: #14130f;
   --color-charcoal: #2b2a26;
@@ -68,6 +70,9 @@ body {
   background: var(--color-paper);
   color: var(--color-ink);
   font-family: var(--font-sans);
+  font-weight: 400;
+  line-height: 1.6;
+  font-synthesis: none;
   overflow-x: clip;
 }
 
@@ -78,6 +83,20 @@ body {
 
 .font-display {
   font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.025em;
+}
+
+.font-semibold {
+  font-weight: 500;
+}
+
+.font-bold {
+  font-weight: 600;
+}
+
+.uppercase {
+  letter-spacing: 0.07em;
 }
 
 ::-webkit-scrollbar {
@@ -100,14 +119,14 @@ body {
 }
 
 .text-hero {
-  font-size: clamp(2.75rem, 8vw, 7.5rem);
-  line-height: 0.95;
-  letter-spacing: -0.02em;
+  font-size: clamp(2.5rem, 7vw, 6.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
 }
 .text-display {
-  font-size: clamp(2rem, 5vw, 4rem);
-  line-height: 1;
-  letter-spacing: -0.02em;
+  font-size: clamp(2rem, 4.5vw, 4.25rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
 }
 
 .site-preloader {
