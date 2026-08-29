@@ -65,23 +65,22 @@ export function CartDrawer() {
                       transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                       className="flex gap-4 py-5"
                     >
-                      <div className="relative h-24 w-20 shrink-0 overflow-hidden bg-line/40">
-                        <Image
-                          src={item.image}
-                          alt={item.name}
-                          fill
-                          sizes="80px"
-                          className="object-cover"
-                        />
-                      </div>
+                      <Link
+                        href={`/product/${item.slug}`}
+                        onClick={closeCart}
+                        aria-label={`View ${item.name}`}
+                        className="relative h-24 w-20 shrink-0 overflow-hidden bg-line/40"
+                      >
+                        <Image src={item.image} alt={item.name} fill sizes="80px" className="object-cover" />
+                      </Link>
                       <div className="flex flex-1 flex-col justify-between">
                         <div className="flex items-start justify-between gap-2">
-                          <div>
+                          <Link href={`/product/${item.slug}`} onClick={closeCart} className="group min-w-0">
                             <p className="text-sm font-medium leading-tight">{item.name}</p>
-                            <p className="mt-1 text-xs text-ink/50">
+                            <p className="mt-1 text-xs text-ink/50 group-hover:text-ink">
                               {item.color} / {item.size}
                             </p>
-                          </div>
+                          </Link>
                           <button
                             onClick={() => removeItem(item.slug, item.size, item.color)}
                             className="text-ink/40 transition-colors hover:text-ink cursor-pointer"
