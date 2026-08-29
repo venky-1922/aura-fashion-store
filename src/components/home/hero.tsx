@@ -15,6 +15,7 @@ export function Hero() {
 
   React.useEffect(() => {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const compactViewport = window.matchMedia("(max-width: 639px)").matches;
     const ctx = gsap.context(() => {
       gsap.from("[data-hero-fade]", {
         opacity: 0,
@@ -28,30 +29,37 @@ export function Hero() {
       if (!reduceMotion) {
         gsap.fromTo(
           imageRef.current,
-          { scale: 1.26, yPercent: -4 },
-          { scale: 1.18, yPercent: 0, duration: 1.8, ease: "power3.out" }
+          { scale: compactViewport ? 1.04 : 1.26, yPercent: compactViewport ? 0 : -4 },
+          {
+            scale: compactViewport ? 1 : 1.18,
+            yPercent: 0,
+            duration: 1.8,
+            ease: "power3.out",
+          }
         );
 
-        gsap.to(photoRef.current, {
-          scale: 1.045,
-          duration: 8,
-          delay: 1.8,
-          ease: "sine.inOut",
-          yoyo: true,
-          repeat: -1,
-        });
+        if (!compactViewport) {
+          gsap.to(photoRef.current, {
+            scale: 1.045,
+            duration: 8,
+            delay: 1.8,
+            ease: "sine.inOut",
+            yoyo: true,
+            repeat: -1,
+          });
 
-        // subtle parallax on scroll
-        gsap.to(imageRef.current, {
-          yPercent: 8,
-          ease: "none",
-          scrollTrigger: {
-            trigger: rootRef.current,
-            start: "top top",
-            end: "bottom top",
-            scrub: true,
-          },
-        });
+          // subtle parallax on scroll
+          gsap.to(imageRef.current, {
+            yPercent: 8,
+            ease: "none",
+            scrollTrigger: {
+              trigger: rootRef.current,
+              start: "top top",
+              end: "bottom top",
+              scrub: true,
+            },
+          });
+        }
       }
     }, rootRef);
 
@@ -61,7 +69,7 @@ export function Hero() {
   return (
     <section
       ref={rootRef}
-      className="relative flex h-[92vh] min-h-[560px] w-full items-end overflow-hidden bg-ink"
+      className="relative flex aspect-video h-auto min-h-0 w-full items-end overflow-hidden bg-ink sm:h-[86vh] sm:min-h-[560px] sm:aspect-auto lg:h-[92vh]"
     >
       <div ref={imageRef} className="absolute inset-0">
         <div ref={photoRef} className="absolute inset-0">
@@ -71,31 +79,31 @@ export function Hero() {
             fill
             priority
             sizes="100vw"
-            className="object-cover object-center opacity-90"
+            className="object-cover object-center opacity-90 sm:object-[60%_center] lg:object-center"
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/20 to-ink/40" />
       </div>
 
-      <div className="relative z-10 w-full px-4 pb-14 sm:px-8 lg:pb-20">
+      <div className="relative z-10 w-full px-4 pb-5 sm:px-8 sm:pb-14 lg:pb-20">
         <div className="mx-auto max-w-[1600px]">
           <p
             data-hero-fade
-            className="mb-4 text-[11px] font-medium uppercase tracking-[0.3em] text-paper/70"
+            className="mb-2 text-[8px] font-medium uppercase tracking-[0.3em] text-paper/70 sm:mb-4 sm:text-[11px]"
           >
             AURA GYM WEAR
           </p>
 
-          <h1 data-hero-fade className="max-w-xl font-display text-display text-paper">
+          <h1 data-hero-fade className="max-w-xl font-display text-[clamp(1.4rem,5.5vw,3.5rem)] leading-[0.95] text-paper sm:text-display">
             Built for your grind.
           </h1>
 
-          <p data-hero-fade className="mt-4 max-w-sm text-sm leading-6 text-paper/75 sm:text-base">
+          <p data-hero-fade className="mt-2 max-w-sm text-[10px] leading-4 text-paper/75 sm:mt-4 sm:text-base sm:leading-6">
             Premium performance wear designed for movement.
           </p>
 
-          <div data-hero-fade className="mt-8 flex flex-wrap items-center gap-4">
-            <Button variant="inverse" size="lg" asChild>
+          <div data-hero-fade className="mt-4 flex flex-wrap items-center gap-4 sm:mt-8">
+            <Button variant="inverse" size="lg" className="scale-75 origin-left sm:scale-100" asChild>
               <Link href="/shop">Shop Now</Link>
             </Button>
           </div>

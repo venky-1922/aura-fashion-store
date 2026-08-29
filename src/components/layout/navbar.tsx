@@ -40,8 +40,10 @@ export function Navbar() {
     <header
       className={cn(
         "sticky top-0 z-50 w-full transition-colors duration-500",
-        isHome && "-mb-20",
-        solid ? "bg-paper/90 backdrop-blur-md border-b border-ink/10" : "bg-transparent"
+        isHome && "lg:-mb-20",
+        solid
+          ? "bg-paper/90 backdrop-blur-md border-b border-ink/10"
+          : "bg-paper border-b border-ink/10 lg:bg-transparent lg:border-transparent"
       )}
     >
       <div
@@ -57,7 +59,7 @@ export function Navbar() {
                 aria-label="Open menu"
                 className={cn(
                   "flex h-9 w-9 items-center justify-center transition-colors cursor-pointer",
-                  solid ? "text-ink" : "text-paper"
+                  solid ? "text-ink" : "text-ink lg:text-paper"
                 )}
               >
                 <Menu className="h-5 w-5" />
@@ -70,7 +72,7 @@ export function Navbar() {
           href="/"
           className={cn(
             "font-display text-xl tracking-[0.24em] transition-colors sm:text-2xl",
-            solid ? "text-ink" : "text-paper"
+            solid ? "text-ink" : "text-ink lg:text-paper"
           )}
         >
           AURA
@@ -97,7 +99,7 @@ export function Navbar() {
             aria-label="Search"
             className={cn(
               "hidden h-9 w-9 items-center justify-center transition-colors sm:flex cursor-pointer",
-              solid ? "text-ink" : "text-paper"
+              solid ? "text-ink" : "text-ink lg:text-paper"
             )}
           >
             <Search className="h-[18px] w-[18px]" />
@@ -107,7 +109,7 @@ export function Navbar() {
             aria-label="Account coming soon"
             className={cn(
               "hidden h-9 w-9 items-center justify-center transition-colors sm:flex cursor-pointer",
-              solid ? "text-ink" : "text-paper"
+              solid ? "text-ink" : "text-ink lg:text-paper"
             )}
           >
             <User className="h-[18px] w-[18px]" />
@@ -117,7 +119,7 @@ export function Navbar() {
             onClick={openCart}
             className={cn(
               "relative flex h-9 w-9 items-center justify-center transition-colors cursor-pointer",
-              solid ? "text-ink" : "text-paper"
+              solid ? "text-ink" : "text-ink lg:text-paper"
             )}
           >
             <ShoppingBag className="h-[18px] w-[18px]" />
